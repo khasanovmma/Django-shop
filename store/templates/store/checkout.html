@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block main %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="box-element">
+                    <a class="btn btn-primary" href="{% url 'cart' %}">Вернуть в корзину</a>
+                    <hr>
+                    <h3>Заказанные товары</h3>
+                    <hr>
+                    {% for item in items %}
+                    {% include 'store/components/_cart_row.html' %}
+                    {% endfor %}
+                    <h5>Товары: {{ order.cart_products_quantity }}</h5>
+                    <h5>Итого: {{ order.cart_total_price|floatformat:2 }}</h5>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="box-element">
+                    <form action="{% url 'process_order' %}" class="form" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div id="user-info">
+                            <div class="form-field">
+                                {{ customer_form.name }}
+                            </div>
+                            <div class="form-field">
+                                {{ customer_form.email }}
+                            </div>
+                            <div class="form-field">
+                                {{ customer_form.phone }}
+                            </div>
+                        </div>
+                        <div id="shipping-info">
+                            <hr>
+                            <p>Адрес доставки:</p>
+                            <hr>
+                            {% for field in shipping_form %}
+                            <div class="form-field">
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <input id="form-button" type="submit" value="Заказать" class="btn btn-success btn-block">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

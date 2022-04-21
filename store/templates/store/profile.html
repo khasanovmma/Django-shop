@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ваш профиль {{ request.user.username }}
+
+<a class="btn btn-danger" href="{% url 'logout' %}">
+    Выйти
+</a>
+
+</body>
+</html>

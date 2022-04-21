@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'store/css/category_product_list.css' %}">
+{% endblock style %}
+
+{% block main %}
+<main>
+    {% include 'store/components/_sales.html' %}
+    <section class="category_products">
+        <div class="products_filter">
+            <div class="container">
+                <div class="row justify-content-around">
+                    {% include 'store/components/_dropdown_filter.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    {% include 'store/components/_product_card.html' %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main %}
