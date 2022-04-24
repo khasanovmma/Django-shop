@@ -21,7 +21,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     name = models.CharField(max_length=200)
-    price = models.FloatField()
+    price = models.BigIntegerField()
     image = models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')

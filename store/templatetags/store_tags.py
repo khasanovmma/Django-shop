@@ -40,6 +40,6 @@ def get_sorters():
 
 
 @register.simple_tag()
-def get_cart_total_quantity(request):
+def get_cart_product_quantity(request):
     data = get_cart_data(request)
     return data['cart_products_quantity']

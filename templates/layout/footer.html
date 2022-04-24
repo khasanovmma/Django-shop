@@ -1,31 +1,24 @@
 {% load static %}
+
 <footer>
     <div class="container">
         <div class="row flex-column flex-md-row justify-content-center align-items-center text-center">
             <div class="col-auto mt-2 mt-md-0">
-                <ul class="">
-                    <li class="footer_nav-item_header">
-                        <a class="footer_nav-link_header" href="">
-                            Shop Totembo
-                        </a>
-                    </li>
-                    <li class="footer_nav-item"><a class="footer_nav-link" href="">Shop braceletes</a></li>
-                </ul>
+                {% include 'components/_footer_nav_item.html' %}
             </div>
             <div class="col-auto mt-2 mt-md-0">
                 <ul>
                     <li class="footer_nav-item">
                         <a href="">
-                        <img src="{% static 'images/header_logo.jpg' %}" alt="">
-                    </a>
-                    </li>
-                    <li class="footer_nav-item">
-                        <a class="footer_nav-link" href="mailto: @Info.totembo.com">
-                            @Info.totembo.com
+                            <img src="{% static 'images/header_logo.jpg' %}" alt="">
                         </a>
                     </li>
-                    <li class="footer_nav-item"><a class="footer_nav-link" href="tel: +998909999999">+998 90 999 99
-                        99</a></li>
+                    <li class="footer_nav-item">
+                        <a class="footer_nav-link" href="mailto: @Info.totembo.com">@Info.totembo.com</a>
+                    </li>
+                    <li class="footer_nav-item">
+                        <a class="footer_nav-link" href="tel: +998909999999">+998 90 999 99 99</a>
+                    </li>
                     <li class="footer_nav-item d-flex justify-content-around align-items-center">
                         <a class="footer_svg" href="">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -57,11 +50,17 @@
             </div>
             <div class="col-auto mt-2 mt-md-0">
                 <ul>
-                    <li class="footer_nav-item_header"><a class="footer_nav-link_header" href="">Customer
-                        Service</a></li>
-                    <li class="footer_nav-item"><a class="footer_nav-link" href="">Privacy Policy</a></li>
-                    <li class="footer_nav-item"><a class="footer_nav-link" href="">My Account</a></li>
-                    <li class="footer_nav-item"><a class="footer_nav-link" href="">Contact Us</a></li>
+                    <li class="footer_nav-item_header"><a class="footer_nav-link_header" href="">Обслуживание
+                        клиентов</a></li>
+                    <li class="footer_nav-item"><a class="footer_nav-link" href="">Политика конфиденциальности</a></li>
+                    {% if not request.user.is_authenticated %}
+                    <li class="footer_nav-item"><a class="footer_nav-link" href="{% url 'user_form' %}">Создать
+                        аккаунт</a></li>
+                    {% else %}
+                    <li class="footer_nav-item"><a class="footer_nav-link" href="{% url 'profile' %}">Мой профиль</a>
+                    </li>
+                    {% endif %}
+                    <li class="footer_nav-item"><a class="footer_nav-link" href="">Контакты</a></li>
                     <li class="footer_nav-item"><a class="footer_nav-link" href="">FAQ</a></li>
                 </ul>
             </div>

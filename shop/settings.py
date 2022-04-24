@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_)fqrzz1j0*xdfn#$i&-hu2!mn-+gz=r1-f!--0p@w8-nij3fh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['online-shop-django.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -130,9 +130,9 @@ INTERNAL_IPS = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join( BASE_DIR / 'static')
+# STATIC_ROOT = os.path.join( BASE_DIR / 'static')
 STATICFILES_DIRS = [
-    # BASE_DIR / 'static',
+    BASE_DIR / 'static',
     BASE_DIR / 'store/static'
 ]
 
@@ -149,10 +149,11 @@ SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 CART_SESSION_ID = 'cart'
 
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'khasanvtest009@gmail.com'
+EMAIL_HOST_USER = 'khasanovtest009@gmail.com'
 EMAIL_HOST_PASSWORD = 'A6516519a'
 EMAIL_USE_TLS = True

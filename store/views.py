@@ -156,27 +156,27 @@ def process_order(request):
 
 Имя: {customer.name}
 Email: {customer.email}
-Телефон: {customer.phone}
+Телефон: {data['phone']}
 Адрес: {data['address']}
 Город: {data['city']}
 Регион: {data['state']}
 Индекс: {data['zipcode']} 
 '''
+    # print(message_to_user)
+    print(customer)
 
     send_mail(
-        subject='Оформление заказа',
-        message=message_to_user,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[customer.email],
-        fail_silently=True
+        'Оформление заказа',
+        message_to_user,
+        settings.EMAIL_HOST_USER,
+        [customer.email],
     )
 
     send_mail(
-        subject='Обработка заказа',
-        message=message_to_owner,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=[customer.email],
-        fail_silently=True
+        'Обработка заказа',
+        message_to_owner,
+        settings.EMAIL_HOST_USER,
+        [settings.EMAIL_HOST_USER],
     )
     messages.success(request, 'Заказ оформлен и отправлен на обработку')
     cart.clear()
@@ -213,7 +213,7 @@ def register(request):
         user = form.save()
         messages.success(request, 'Отлично! Вы успешно зарегистрировались!')
     else:
-        messages.error(request, 'Данное имя пользователя уже занято')
+        messages.error(request, form.errors)
     return redirect('user_form')
 
 

@@ -1,5 +1,5 @@
 {% load static %}
-<div class="product_card text-center">
+<div class="product_card text-center mh-100">
     {% comment icon %}
     <div class="product_card-basket">
         <a href="#" class="product_card_basket-link basket_icon">
@@ -14,7 +14,7 @@
     {% endcomment %}
     <a class="product_card-detail" href="{{ product.get_absolute_url }}">
         <div class="w-100">
-            <img class="product_card-img img-fluid" src="{% static 'store/images/products/product1.png' %}" alt="">
+            <img class="product_card-img img-fluid" style="height:250px;" src="{{ product.image.url }}" alt="">
         </div>
         <div class="product_card-description">
             <p class="product_card-name">{{ product.name }}</p>
@@ -25,6 +25,6 @@
     {% if product.quantity > 0 %}
     <a href="{% url 'to_cart' product_id=product.pk action='add' %}" class="product_card-btn">В КОРЗИНУ</a>
     {% else %}
-    <p class="product__card-txt">НЕТ В НАЛИЧИИ</p>
+    <a class="product_card-txt">НЕТ В НАЛИЧИИ</a>
     {% endif %}
 </div>

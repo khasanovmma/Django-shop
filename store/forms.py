@@ -31,13 +31,17 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['username', 'email']
 
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Имя пользователя'
-            })
+            }),
+            'email': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Email'
+            }),
         }
 
 

@@ -1,4 +1,7 @@
 {% load static %}
+{% load store_tags %}
+{% get_categories as categories %}
+
 <div class="header_lx-panel">
     <input type="checkbox" class="toggler">
     <div class="hamburger">
@@ -16,7 +19,9 @@
                             <img src="{% static 'images/icons/ru_lang_icon.svg' %}" alt="">
                         </a>
                     </li>
-                    <li class="header_nav-item"><a class="header_nav-link" href="">Часы</a></li>
+                    {% for category in categories %}
+                        <li class="header_nav-item"><a class="header_nav-link" href="">{{ category.title }}</a></li>
+                    {% endfor %}
                     <li class="header_nav-item"><a class="header_nav-link" href="">Контакты</a></li>
                     <li class="header_nav-item"><a class="header_nav-link" href="">Создать аккаунт</a></li>
                 </ul>

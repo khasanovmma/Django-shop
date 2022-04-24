@@ -1,6 +1,7 @@
 {% load static %}
-<header>
-    <nav class="header_nav">
+
+<header class="{% if 'category' in request.path %} mb-0 {% endif %}">
+    <nav class="header_nav {% if 'category' in request.path %} mb-0 {% endif %} ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-auto">
@@ -9,15 +10,19 @@
                     </a>
                 </div>
                 <div class="col-sm-8 col-lx-8 m-auto">
-                    {% include 'components/_header_categories.html' %}
+                    {% include 'components/_header_nav.html' %}
                 </div>
             </div>
         </div>
+
         {% include 'components/_header_panel.html' %}
+
         {% include 'components/_header_menu.html' %}
+
     </nav>
     {% if request.path == '/' %}
-{% include 'components/_header_text.html' %}
-{% include 'components/_header_poster.html' %}
+        {% include 'components/_header_text.html' %}
+        {% include 'components/_header_poster.html' %}
     {% endif %}
+
 </header>
